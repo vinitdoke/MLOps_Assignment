@@ -5,6 +5,7 @@ from sklearn import tree
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, RobustScaler
 from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.ensemble import RandomForestClassifier
 import joblib
 from sklearn.metrics import f1_score
 import json
@@ -51,7 +52,7 @@ train_df = train_df[train_df.columns[1:]]
 X_train = train_df.drop("Class", axis = 1)
 y_train = train_df["Class"]
 # print(final_df.columns)
-clf = tree.DecisionTreeClassifier(criterion="entropy")
+clf = RandomForestClassifier(max_depth=2, random_state=0)
 clf = clf.fit(X_train, y_train)
 
 # # Save Trained Model
